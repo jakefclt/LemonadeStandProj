@@ -34,7 +34,7 @@ namespace LemonadeStand_3DayStarter
                               "\n Cups " + pricePerCup);
         }
 
-        public void SellLemons(Player player)
+        public int SellLemons(Player player)
         {
             int lemonsToPurchase = UserInterface.GetNumberOfItems("lemons");
             double transactionAmount = CalculateTransactionAmount(lemonsToPurchase, pricePerLemon);
@@ -42,10 +42,12 @@ namespace LemonadeStand_3DayStarter
             {
                 PerformTransaction(player.wallet, transactionAmount);
                 player.inventory.AddLemonsToInventory(lemonsToPurchase);
+                
             }
+            return lemonsToPurchase;
         }
 
-        public void SellSugarCubes(Player player)
+        public int SellSugarCubes(Player player)
         {
             int sugarToPurchase = UserInterface.GetNumberOfItems("sugar");
             double transactionAmount = CalculateTransactionAmount(sugarToPurchase, pricePerSugarCube);
@@ -54,9 +56,10 @@ namespace LemonadeStand_3DayStarter
                 PerformTransaction(player.wallet, transactionAmount);
                 player.inventory.AddSugarCubesToInventory(sugarToPurchase);
             }
-        }
+            return sugarToPurchase;
+        }   
 
-        public void SellIceCubes(Player player)
+        public int SellIceCubes(Player player)
         {
             int iceCubesToPurchase = UserInterface.GetNumberOfItems("ice cubes");
             double transactionAmount = CalculateTransactionAmount(iceCubesToPurchase, pricePerIceCube);
@@ -65,9 +68,10 @@ namespace LemonadeStand_3DayStarter
                 PerformTransaction(player.wallet, transactionAmount);
                 player.inventory.AddIceCubesToInventory(iceCubesToPurchase);
             }
+            return iceCubesToPurchase;
         }
 
-        public void SellCups(Player player)
+        public int SellCups(Player player)
         {
             int cupsToPurchase = UserInterface.GetNumberOfItems("cups");
             double transactionAmount = CalculateTransactionAmount(cupsToPurchase, pricePerCup);
@@ -76,6 +80,7 @@ namespace LemonadeStand_3DayStarter
                 PerformTransaction(player.wallet, transactionAmount);
                 player.inventory.AddCupsToInventory(cupsToPurchase);
             }
+            return cupsToPurchase;
         }
 
         private double CalculateTransactionAmount(int itemCount, double itemPricePerUnit)

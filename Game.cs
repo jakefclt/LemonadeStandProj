@@ -17,17 +17,15 @@ namespace LemonadeStand_3DayStarter
         double buyCups;
         
         Weather weather = new Weather();
-        Wallet wallet = new Wallet();
+       
         Store store = new Store();
-        Inventory inventory = new Inventory();
-        Recipe recipe = new Recipe();
+       
         
     public Game()
         {
-            //days = new List<Day>() { "1", "2", "3", "4", "5", "6", "7" };
+            days = new List<Day>() {new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday") };
         }
 
-       
 
 
 
@@ -37,7 +35,8 @@ namespace LemonadeStand_3DayStarter
 
 
 
-    public void RunGame()
+
+        public void RunGame()
         {
 
             //Display Game Rules
@@ -45,29 +44,41 @@ namespace LemonadeStand_3DayStarter
             //Display money in wallet
 
             
-            Console.WriteLine("Today is day 1. It is " + weather.condition + " outside and the temperature is " + weather.temperature + " degrees.");
-            wallet.DisplayMoney();
+            Console.WriteLine("Today is " + days[0].day + " It is " + weather.condition + " outside and the temperature is " + weather.temperature + " degrees.");
+            player.wallet.DisplayMoney();
             Console.WriteLine("Press Enter to Continue to the Store");
             Console.ReadLine();
 
             //Display Cost of items
-
+            
             store.DisplayPricePerItem();
-            buyLemons = player.BuyLemons();
-            buySugar = player.BuySugar();
-            buyIce = player.BuyIce();
-            buyCups = player.BuyCups();
-            inventory.AddLemonsToInventory(buyLemons);
-            inventory.AddSugarCubesToInventory(buySugar);
-            inventory.AddIceCubesToInventory(buyIce);
-            inventory.AddCupsToInventory(buyCups);
-            //Display inventory
-            inventory.DisplayInventory();
+            Console.WriteLine("Lets make your lemonade Recipe!");
+            Console.ReadLine();
+            buyLemons = store.SellLemons(player);
+            buySugar = store.SellSugarCubes(player);
+            buyIce = store.SellIceCubes(player);
+            buyCups = store.SellCups(player);
+
+            player.recipe.DisplayRecipe(buyLemons, buySugar, buyIce, buyCups);
+            //player.wallet.PayMoneyForItems(store.pricePerLemon);
+            player.wallet.DisplayMoney();
+
+
+
+
+
+
+
+
+
+
+
+
             //Display wallet balance
 
-            
 
-            
+
+
         }
             
 

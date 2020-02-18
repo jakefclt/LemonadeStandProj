@@ -11,15 +11,16 @@ namespace LemonadeStand_3DayStarter
         public Weather weather;
         public List<Customer> customer;
         public Customer randomCustomer;
+        public string day;
         
         
-        
-        public Day()
+        public Day(string day)
         {
             weather = new Weather();
             customer = new List<Customer>();
             randomCustomer = new Customer();
-            
+            this.day = day;
+
         }
         public void CurrentWeather()
         {
