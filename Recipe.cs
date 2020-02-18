@@ -11,6 +11,7 @@ namespace LemonadeStand_3DayStarter
         public int amountOfLemons;
         public int amountOfSugarCubes;
         public int amountOfIceCubes;
+        public int amountOfCups;
         public double pricePerCup;
 
         public Recipe()
@@ -18,15 +19,21 @@ namespace LemonadeStand_3DayStarter
 
         }
 
-        public void DisplayRecipe(int amountOfLemons, int amountOfSugarCubes, int amountOfIceCubes, double pricePerCup)
+        public void DisplayRecipe(int amountOfLemons, int amountOfSugarCubes, int amountOfIceCubes, int amountOfCups)
         {
 
             this.amountOfLemons = amountOfLemons;
             this.amountOfSugarCubes = amountOfSugarCubes;
             this.amountOfIceCubes = amountOfIceCubes;
-            this.pricePerCup = pricePerCup;
-            Console.WriteLine("Lemons: " + amountOfLemons + " Sugar Cubes: " + amountOfSugarCubes + " Ice Cubes: " + amountOfIceCubes + " Cups: " + pricePerCup);
+            this.amountOfCups = amountOfCups;
+            Console.WriteLine("Lemons: " + amountOfLemons + " Sugar Cubes: " + amountOfSugarCubes + " Ice Cubes: " + amountOfIceCubes + " Cups: " + amountOfCups);
         }
+
+       public void SetPricePerCup()
+        {
+            Console.WriteLine("What would you like to set your price per cup of lemonade?");
+            pricePerCup = double.Parse(Console.ReadLine());
+        }     
     
     }
    

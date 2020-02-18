@@ -18,7 +18,7 @@ namespace LemonadeStand_3DayStarter
             
             weatherConditions = new List<string>() { "Sunny", "Rainy", "Cloudy" };
             condition = weatherConditions[randomWeather.Next(0,3)];
-            temperature = randomTemp.Next(80, 100);
+            temperature = randomTemp.Next(70, 100);
         }
 
     }

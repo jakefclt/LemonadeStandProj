@@ -10,23 +10,43 @@ namespace LemonadeStand_3DayStarter
     {
         public List<string> names;
         public string name;
-        Random randomName = new Random();
-        
+        public double pricePref;
+        Random random = new Random();
         public Customer()
         {
-            names = new List<string>() { "Customer 1", "Customer 2", "Customer 3", "Customer 4" };
-            name = names[randomName.Next(0, 3)];
-        }
-        public void Customer1()
+            names = new List<string>();
+            SetPref();
+            
+        }   
+        public void SetPref()
         {
-            string customer1 = names[0];
-
+            pricePref = random.NextDouble();
         }
+      public void BuyLemonade(Player player, Weather weather, Recipe recipe, Wallet wallet)
+        {
+           
+                if (weather.condition == "Sunny" && weather.temperature >= 90 && recipe.pricePerCup <= pricePref)
+                {
+                         player.wallet.Money += recipe.pricePerCup;
+                        
+                }                              
+                else if (recipe.pricePerCup >= pricePref)
+                {
+                        player.wallet.Money += recipe.pricePerCup - .10;
+                }
+                else
+                {
+                        player.wallet.Money -= recipe.pricePerCup;
+                }
 
-      
-    }      
+                
+               
+      }       
+    }
+
+
+}      
     
     
             
     
-}

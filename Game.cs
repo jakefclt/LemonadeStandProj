@@ -14,13 +14,14 @@ namespace LemonadeStand_3DayStarter
         int buyLemons;
         int buySugar;
         int buyIce;
-        double buyCups;
-        
-        Weather weather = new Weather();
-       
+        int buyCups;
+        Day randomDay = new Day();        
+        Weather weather = new Weather();       
         Store store = new Store();
-       
-        
+        int randomCustomer;
+        Customer customer = new Customer();
+        Wallet wallet = new Wallet();
+        Recipe recipe = new Recipe();
     public Game()
         {
             days = new List<Day>() {new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday") };
@@ -49,7 +50,7 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine("Press Enter to Continue to the Store");
             Console.ReadLine();
 
-            //Display Cost of items
+            
             
             store.DisplayPricePerItem();
             Console.WriteLine("Lets make your lemonade Recipe!");
@@ -62,7 +63,13 @@ namespace LemonadeStand_3DayStarter
             player.recipe.DisplayRecipe(buyLemons, buySugar, buyIce, buyCups);
             //player.wallet.PayMoneyForItems(store.pricePerLemon);
             player.wallet.DisplayMoney();
+            recipe.SetPricePerCup();
 
+            //Game Logic
+            randomCustomer= randomDay.RandomNumberOfCustomer(30, 100);
+            randomDay.AddCustomersToList(randomCustomer);
+            customer.BuyLemonade(player, days[0].weather, recipe, wallet);
+            player.wallet.DisplayMoney();
 
 
 
