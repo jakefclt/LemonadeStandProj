@@ -6,81 +6,73 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand_3DayStarter
 {
-    class Game
+    public class Game
     {
-        Player player;
+        Player player = new Player();
         List<Day> days;
         int currentDay;
-        Day day = new Day();
-        Day newDay = new Day();
+        int buyLemons;
+        int buySugar;
+        int buyIce;
+        double buyCups;
+        
         Weather weather = new Weather();
         Wallet wallet = new Wallet();
         Store store = new Store();
         Inventory inventory = new Inventory();
-        public Game()
+        Recipe recipe = new Recipe();
+        
+    public Game()
         {
-
+            //days = new List<Day>() { "1", "2", "3", "4", "5", "6", "7" };
         }
 
-        public int BuyLemons()
-        {
-            Console.WriteLine("How many Lemons do you want to buy?");
-            int input;
-            input = int.Parse(Console.ReadLine());
-            return input;
-        }
+       
 
-        public int SugarCubes()
-        {
-            Console.WriteLine("How many Sugar Cubes do you want to buy?");
-            int input;
-            input = int.Parse(Console.ReadLine());
-            return input;
-        }
 
-        public int IceCubes()
-        {
-            Console.WriteLine("How many Ice Cubes do you want to buy?");
-            int input;
-            input = int.Parse(Console.ReadLine());
-            return input;
-        }
 
-        public int Cups()
-        {
-            Console.WriteLine("How many Cups do you want to buy?");
-            int input;
-            input = int.Parse(Console.ReadLine());
-            return input;
-        }
 
-        public void RunGame()
+
+
+
+
+
+    public void RunGame()
         {
 
             //Display Game Rules
 
             //Display money in wallet
-            Console.WriteLine("You have "+ wallet.Money + " in your wallet.");
+
+            
+            Console.WriteLine("Today is day 1. It is " + weather.condition + " outside and the temperature is " + weather.temperature + " degrees.");
+            wallet.DisplayMoney();
             Console.WriteLine("Press Enter to Continue to the Store");
             Console.ReadLine();
 
             //Display Cost of items
 
-            Console.WriteLine(" Price Per Item" +
-                              "\n" +
-                              "\n Lemons: " + store.pricePerLemon +
-                              "\n Sugar Cubes: " + store.pricePerSugarCube +
-                              "\n Ice Cube: " + store.pricePerIceCube +
-                              "\n Cups " + store.pricePerCup);
+            store.DisplayPricePerItem();
+            buyLemons = player.BuyLemons();
+            buySugar = player.BuySugar();
+            buyIce = player.BuyIce();
+            buyCups = player.BuyCups();
+            inventory.AddLemonsToInventory(buyLemons);
+            inventory.AddSugarCubesToInventory(buySugar);
+            inventory.AddIceCubesToInventory(buyIce);
+            inventory.AddCupsToInventory(buyCups);
+            //Display inventory
+            inventory.DisplayInventory();
+            //Display wallet balance
 
-            BuyLemons();
-            SugarCubes();
-            IceCubes();
-            Cups();
+            
+
+            
         }
             
 
        
+
            
 
 

@@ -54,7 +54,7 @@ namespace LemonadeStand_3DayStarter
             }
         }
 
-        public void AddCupsToInventory(int numberOfCups)
+        public void AddCupsToInventory(double numberOfCups)
         {
             for(int i = 0; i < numberOfCups; i++)
             {
@@ -62,5 +62,13 @@ namespace LemonadeStand_3DayStarter
                 cups.Add(cup);
             }
         }
-    }
+        public void DisplayInventory()
+        {
+            Console.WriteLine("Your Current Inventory Is: ");
+            Console.WriteLine(lemons.Count + " Lemons");
+            Console.WriteLine(sugarCubes.Count + " Sugar Cubes");
+            Console.WriteLine(iceCubes.Count + " Ice Cubes");
+            Console.WriteLine(cups.Count + " Cups");
+        }
+    }  
 }

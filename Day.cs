@@ -19,6 +19,7 @@ namespace LemonadeStand_3DayStarter
             weather = new Weather();
             customer = new List<Customer>();
             randomCustomer = new Customer();
+            
         }
         public void CurrentWeather()
         {

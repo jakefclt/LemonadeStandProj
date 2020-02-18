@@ -17,13 +17,23 @@ namespace LemonadeStand_3DayStarter
         // constructor (SPAWNER)
         public Store()
         {
-            pricePerLemon = .5;
-            pricePerSugarCube = .1;
+            pricePerLemon = .55;
+            pricePerSugarCube = .15;
             pricePerIceCube = .01;
             pricePerCup = .25;
         }
 
         // member methods (CAN DO)
+        public void DisplayPricePerItem()
+        {
+            Console.WriteLine(" Here is the price per item:" +
+                              "\n" +
+                              "\n Lemons: " + pricePerLemon +
+                              "\n Sugar Cubes: " + pricePerSugarCube +
+                              "\n Ice Cube: " + pricePerIceCube +
+                              "\n Cups " + pricePerCup);
+        }
+
         public void SellLemons(Player player)
         {
             int lemonsToPurchase = UserInterface.GetNumberOfItems("lemons");
