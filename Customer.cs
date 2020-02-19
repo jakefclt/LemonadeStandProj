@@ -12,9 +12,11 @@ namespace LemonadeStand_3DayStarter
         public string name;
         public double pricePref;
         Random random = new Random();
+        
+        
         public Customer()
         {
-            names = new List<string>();
+            
             SetPref();
             
         }   
@@ -22,24 +24,38 @@ namespace LemonadeStand_3DayStarter
         {
             pricePref = random.NextDouble();
         }
-      public void BuyLemonade(Player player, Weather weather, Recipe recipe, Wallet wallet)
+      public bool BuyLemonade(Player player, Weather weather)
         {
            
-                if (weather.condition == "Sunny" && weather.temperature >= 90 && recipe.pricePerCup <= pricePref)
-                {
-                         player.wallet.Money += recipe.pricePerCup;
-                        
-                }                              
-                else if (recipe.pricePerCup >= pricePref)
-                {
-                        player.wallet.Money += recipe.pricePerCup - .10;
-                }
-                else
-                {
-                        player.wallet.Money -= recipe.pricePerCup;
-                }
+                if (weather.condition == "Sunny" || weather.condition == "Cloudy" && weather.temperature >= 90 && player.recipe.pricePerCup <= pricePref)
+            {
+                player.wallet.Money += player.recipe.pricePerCup;
+                return true;
+            }                              
+                else if (weather.condition == "Sunny" || weather.condition == "Cloudy" && weather.temperature < 90 && weather.temperature >= 80 && player.recipe.pricePerCup <= pricePref)
+            {
+                            
+                player.wallet.Money += player.recipe.pricePerCup - .05;
+                return true;
+            }
+                 else if (weather.condition == "Sunny" || weather.condition == "Cloudy" && weather.temperature < 80 && player.recipe.pricePerCup <= pricePref)
+            {
+                player.wallet.Money += player.recipe.pricePerCup - .10;
+                return true;
+            }
+                 else if (weather.condition == "Rainy" && weather.temperature > 90 && player.recipe.pricePerCup <= pricePref)
+            {
+                player.wallet.Money += player.recipe.pricePerCup - .05;
+                return true;
 
-                
+            }
+                else
+            {
+                player.wallet.Money = player.recipe.pricePerCup - player.recipe.pricePerCup;
+                return false;  
+            }
+
+            
                
       }       
     }

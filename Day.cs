@@ -10,22 +10,21 @@ namespace LemonadeStand_3DayStarter
     {
         public Weather weather;
         public List<Customer> customers;
-       
+        Player thePlayer;
+        public int cupsSold = 0;
         public string day;
 
 
-        public Day(string day)
+        public Day(string day, Player player)
         {
+            thePlayer = player ;
             weather = new Weather();
-            
-           
+            customers = new List<Customer>();
+
             this.day = day;
             
 
-        }
-        public Day()
-        {
-            customers = new List<Customer>();
+        
         }
         public void CurrentWeather()
         {
@@ -40,13 +39,37 @@ namespace LemonadeStand_3DayStarter
             Random random = new Random();
             return random.Next(min, max);
         }
+        
         public void AddCustomersToList(int numberOfCustomers)
         {
             for (int i = 0; i < numberOfCustomers; i++)
             {
+                
                 Customer customer = new Customer();
                 customers.Add(customer);
-            }
+             
+            }            
+
         }
+        public void CustomerBuysLemonade()
+        {
+            for (int i = 0; i < customers.Count; i++)
+            {
+                bool soldCup = customers[i].BuyLemonade(thePlayer, weather);
+
+                if (soldCup == true)
+                {
+                    cupsSold++;
+                }
+            }
+
+
+        }
+
+        public void DisplayDayResults()
+        {
+
+        }
+
     }
 }

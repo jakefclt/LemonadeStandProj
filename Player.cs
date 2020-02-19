@@ -26,33 +26,7 @@ namespace LemonadeStand_3DayStarter
             
         }
 
-        // member methods (CAN DO)
-        public int BuyLemons()
-        {
-            Console.WriteLine("How many lemons do you want to buy?");
-            int buyLemons = int.Parse(Console.ReadLine());
-            return buyLemons;
-        }
-        public int BuySugar()
-        {
-            Console.WriteLine("How much sugar do you want to buy?");
-            int buySugar = int.Parse(Console.ReadLine());
-            return buySugar;
-            
-        }
-        public int BuyIce()
-        {
-            Console.WriteLine("How much ice do you want to buy?");
-            int buyIce = int.Parse(Console.ReadLine());
-            return buyIce;
-        }  
-        public double BuyCups()
-        {
-            Console.WriteLine("How many cups do you want to buy?");
-            double buyCups = double.Parse(Console.ReadLine());
-            return buyCups;
-        }
-        
+      
  
 
       

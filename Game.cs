@@ -14,8 +14,7 @@ namespace LemonadeStand_3DayStarter
         int buyLemons;
         int buySugar;
         int buyIce;
-        int buyCups;
-        Day randomDay = new Day();        
+        int buyCups;      
         Weather weather = new Weather();       
         Store store = new Store();
         int randomCustomer;
@@ -24,12 +23,10 @@ namespace LemonadeStand_3DayStarter
         Recipe recipe = new Recipe();
     public Game()
         {
-            days = new List<Day>() {new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday"), new Day("Monday") };
+            
+            days = new List<Day>() {new Day("Monday", player), new Day("Tuesday", player), new Day("Wednesday", player), new Day("Thursday", player), new Day("Friday", player), new Day("Saturday", player), new Day("Sunday", player) };
         }
-
-
-
-
+     
 
 
 
@@ -64,12 +61,14 @@ namespace LemonadeStand_3DayStarter
             //player.wallet.PayMoneyForItems(store.pricePerLemon);
             player.wallet.DisplayMoney();
             recipe.SetPricePerCup();
-
+            Console.WriteLine("Press Enter to Play!");
+            Console.ReadLine();
             //Game Logic
-            randomCustomer= randomDay.RandomNumberOfCustomer(30, 100);
-            randomDay.AddCustomersToList(randomCustomer);
-            customer.BuyLemonade(player, days[0].weather, recipe, wallet);
-            player.wallet.DisplayMoney();
+            randomCustomer= days[0].RandomNumberOfCustomer(50, 200);
+            days[0].AddCustomersToList(randomCustomer);            
+            days[0].CustomerBuysLemonade();
+            Console.WriteLine("You sold " + days[0].cupsSold + " cups today!");
+
 
 
 
