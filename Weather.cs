@@ -31,5 +31,13 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine("The temperature is " + temperature + " degrees.");
 
         }
+        /*The SINGLE RESPONSIBILITY PRINCIPLE was utilized for this class. The reasoning I chose this first 
+         principle is because both methods in this class performs a single function. The class itself also 
+         allow other parts of the application to build off its single functionality of displaying weather 
+         conditions. */
+
+        
+
+         
     }
 }

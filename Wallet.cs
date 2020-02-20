@@ -33,7 +33,9 @@ namespace LemonadeStand_3DayStarter
         {
             
             Console.WriteLine("You have $" + Money + " in your wallet.");
-            
+            /* The OPEN/CLOSED PRINCIPLE extends the functionality of the code above
+             to allow for rising requirements such as adding daily profits to the 
+             players wallet without having to modify the existing source code. */
         }
         public void PayMoneyForItems(double transactionAmount)
         {
