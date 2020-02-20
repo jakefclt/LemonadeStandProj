@@ -9,7 +9,8 @@ namespace LemonadeStand_3DayStarter
     class Wallet
     {
         private double money;
-
+        Day day = new Day();
+        
         // property - TBD
         public double Money
         {
@@ -28,15 +29,17 @@ namespace LemonadeStand_3DayStarter
             money = 20.00;
         }
 
-        public void DisplayMoney()
+        public void DisplayBalance()
         {
+            
             Console.WriteLine("You have $" + Money + " in your wallet.");
+            
         }
         public void PayMoneyForItems(double transactionAmount)
         {
             money -= transactionAmount;
             
         }
-
+       
     }
 }

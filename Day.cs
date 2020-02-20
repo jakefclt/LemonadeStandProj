@@ -11,7 +11,7 @@ namespace LemonadeStand_3DayStarter
         public Weather weather;
         public List<Customer> customers;
         Player thePlayer;
-        public int cupsSold = 0;
+        public double cupsSold;
         public string day;
 
 
@@ -20,12 +20,14 @@ namespace LemonadeStand_3DayStarter
             thePlayer = player ;
             weather = new Weather();
             customers = new List<Customer>();
-
             this.day = day;
-            
-
-        
+            cupsSold = 0;
         }
+        public Day()
+        {
+
+        }
+     
         public void CurrentWeather()
         {
 
@@ -66,10 +68,7 @@ namespace LemonadeStand_3DayStarter
 
         }
 
-        public void DisplayDayResults()
-        {
-
-        }
+       
 
     }
 }
