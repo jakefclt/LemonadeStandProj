@@ -22,7 +22,7 @@ namespace LemonadeStand_3DayStarter
         Customer customer = new Customer();
         Wallet wallet = new Wallet();
         Recipe recipe = new Recipe();
-        double newBalance;
+      
     public Game()
         {
             
@@ -35,24 +35,14 @@ namespace LemonadeStand_3DayStarter
             return profit;
         }
 
-        //public double DisplayNewWalletBalance()
-        //{
-        //    double balance;
-        //    balance = (dailyProfit + player.wallet.Money);
-        //    Console.WriteLine("Your new wallet balance is " + balance);
-        //    return balance;
-        //}
+      
 
 
 
 
 
         public void RunGame()
-        {
-
-            //Display Game Rules
-
-            //Display money in wallet
+        {            
 
             for (int i = 0; i < days.Count; i++)
             {
@@ -73,23 +63,20 @@ namespace LemonadeStand_3DayStarter
                 buyIce = store.SellIceCubes(player);
                 buyCups = store.SellCups(player);
                 //Set price per cup & display wallet balance
-                player.recipe.DisplayRecipe(buyLemons, buySugar, buyIce, buyCups);
+                player.recipe.DisplayRecipe(buyLemons, buySugar, buyIce, buyCups);                
                 player.wallet.DisplayBalance();
                 recipe.SetPricePerCup();
                 Console.WriteLine("Press Enter to see how you did!");
                 Console.ReadLine();
                 //Customer interface
                 randomCustomer = days[i].RandomNumberOfCustomer(50, 200);
-                days[0].AddCustomersToList(randomCustomer);
-                days[0].CustomerBuysLemonade();
+                days[i].AddCustomersToList(randomCustomer);
+                days[i].CustomerBuysLemonade();
                 Console.WriteLine("You sold " + days[i].cupsSold + " cups today!");
                 dailyProfit = DisplayDailyProfit(days[i]);
                 Console.WriteLine("You made $" + dailyProfit + " today.");
-                newBalance = dailyProfit + player.wallet.Money;
-                Console.WriteLine("Your Current balance is: " + newBalance);
-                Console.WriteLine("Press Enter to play Again." );
-                
-               
+                player.wallet.Money += dailyProfit;
+                Console.WriteLine("Press Enter to play Again." );                               
                 Console.ReadLine();
 
                 
@@ -105,7 +92,7 @@ namespace LemonadeStand_3DayStarter
 
 
 
-            //Display wallet balance
+           
 
 
 

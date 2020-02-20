@@ -26,33 +26,55 @@ namespace LemonadeStand_3DayStarter
         }
       public bool BuyLemonade(Player player, Weather weather)
         {
-           
-                if (weather.condition == "Sunny" || weather.condition == "Cloudy" && weather.temperature >= 90 && player.recipe.pricePerCup <= pricePref)
+
+            if (weather.condition == "Sunny" && weather.temperature >= 90 && player.recipe.pricePerCup <= pricePref)
             {
                 player.wallet.Money += player.recipe.pricePerCup;
                 return true;
-            }                              
-                else if (weather.condition == "Sunny" || weather.condition == "Cloudy" && weather.temperature < 90 && weather.temperature >= 80 && player.recipe.pricePerCup <= pricePref)
+            }
+            else if (weather.condition == "Sunny" && weather.temperature < 90 && weather.temperature >= 80 && player.recipe.pricePerCup <= pricePref)
             {
-                            
+
                 player.wallet.Money += player.recipe.pricePerCup - .05;
                 return true;
             }
-                 else if (weather.condition == "Sunny" || weather.condition == "Cloudy" && weather.temperature < 80 && player.recipe.pricePerCup <= pricePref)
+            else if (weather.condition == "Sunny" && weather.temperature < 80 && player.recipe.pricePerCup <= pricePref)
             {
                 player.wallet.Money += player.recipe.pricePerCup - .10;
                 return true;
             }
-                 else if (weather.condition == "Rainy" && weather.temperature > 90 && player.recipe.pricePerCup <= pricePref)
+            else if (weather.condition == "Cloudy" && weather.temperature >= 90 && player.recipe.pricePerCup <= pricePref)
+            {
+                player.wallet.Money += player.recipe.pricePerCup - .02;
+                return true;
+            }
+            else if (weather.condition == "Cloudy" && weather.temperature < 90 && weather.temperature >= 80 && player.recipe.pricePerCup <= pricePref)
+            {
+
+                player.wallet.Money += player.recipe.pricePerCup - .05;
+                return true;
+            }
+            else if (weather.condition == "Cloudy" && weather.temperature < 80 && player.recipe.pricePerCup <= pricePref)
+            {
+                player.wallet.Money += player.recipe.pricePerCup - .08;
+                return true;
+            }
+            else if (weather.condition == "Rainy" && weather.temperature > 90 && player.recipe.pricePerCup <= pricePref)
             {
                 player.wallet.Money += player.recipe.pricePerCup - .05;
                 return true;
 
             }
-                else
+            else if (weather.condition == "Rainy" && weather.temperature < 90 && weather.temperature >= 80 && player.recipe.pricePerCup <= pricePref)
+            {
+
+                player.wallet.Money += player.recipe.pricePerCup - .10;
+                return true;
+            }
+            else
             {
                 player.wallet.Money = player.recipe.pricePerCup - player.recipe.pricePerCup;
-                return false;  
+                return false;
             }
 
             
